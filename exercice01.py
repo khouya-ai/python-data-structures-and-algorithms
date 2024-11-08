@@ -1,4 +1,11 @@
+"""
+Etudiant : Oussama KHOUYA
+Encadrent : Pr. mohammed QBADOU
+Date de soumission : 08-11-2024
 
+"""
+
+# On considère la section de code suivante :
 from random import randint, sample
 
 std_nbr = 10  # nombre d'etudiants
@@ -25,15 +32,8 @@ database = {'Students': ['Student_' + str(i) for i in range(1, std_nbr + 1)],
             }
             }
 
-#
-print (database['Students'])
-print (database['Groups'])
-print (database['DS'])
-print (database['Attendance'])
-# print (database['TP'][0])
-# print (database['TP'][0][0])
 
-##### Question 1
+##### Question 1: trouver la liste des étudiants par groupe
 
 def get_students_by_group():
     # Initialiser le dictionnaire des groupes
@@ -49,7 +49,7 @@ def get_students_by_group():
 print(get_students_by_group())
 
 
-##### Question 2
+##### Question 2: Calcule de la note finale pour chaque étudiant selon la formule
 
 def calculate_final_grades():
     # Initialiser le dictionnaire des notes finales
@@ -97,4 +97,34 @@ def calculate_final_grades():
 print(calculate_final_grades())
 
 
-##### Question 3
+##### Question 3 : Déterminer les étudiants absents par groupe pour chaque séance
+
+def get_absent_students_by_group():
+    # Initialiser le dictionnaire des absences
+    absences = {}
+
+    # Pour chaque jour dans l'attendance
+    for day in database['Attendance']:
+        # Initialiser le sous-dictionnaire pour ce jour
+        absences[day] = {
+            'A': [],
+            'B': [],
+            'C': [],
+            'D': []
+        }
+
+        # Pour chaque étudiant
+        for i in range(std_nbr):
+            # Si l'étudiant est absent (minutes > 20)
+            if database['Attendance'][day][i] in min_att['Absent']:
+                # Récupérer son groupe et son nom
+                student_group = database['Groups'][i]
+                student_name = database['Students'][i]
+                # Ajouter l'étudiant à la liste des absents de son groupe
+                absences[day][student_group].append(student_name)
+
+    return absences
+
+
+# Test de la fonction
+print(get_absent_students_by_group())
