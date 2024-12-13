@@ -51,17 +51,6 @@ class BinarySearchTree:
         else:
             return self._search_recursive(current.right, key)
 
-    def inorder_traversal(self):
-        # Retourne une liste triée des clés avec leurs données
-        result = []
-        self._inorder_recursive(self.root, result)
-        return result
-
-    def _inorder_recursive(self, current, result):
-        if current:
-            self._inorder_recursive(current.left, result)
-            result.append(current.data)
-            self._inorder_recursive(current.right, result)
 
     def print_tree_2d(self):
         # Affiche l'arbre en 2D avec des barres inclinées
@@ -95,24 +84,16 @@ class GestionEtudiants:
     def rechercher_par_moyenne(self, moyenne):
         return self.abr_moyenne.search(moyenne)
 
-    def afficher_tous_les_etudiants(self):
-        print("\nÉtudiants triés par matricule :")
-        for etudiant in self.abr_matricule.inorder_traversal():
-            print(etudiant)
-        print("\nÉtudiants triés par moyenne :")
-        for etudiant in self.abr_moyenne.inorder_traversal():
-            print(etudiant)
-
     def afficher_arbres_2d(self):
-        print("\nArbre des matricules (2D):")
+        print("\nArbre des matricules :")
         self.abr_matricule.print_tree_2d()
-        print("\nArbre des moyennes (2D):")
+        print("\nArbre des moyennes :")
         self.abr_moyenne.print_tree_2d()
 
 # Exemple d'utilisation
 gestion = GestionEtudiants()
 
-# Ajout de 20 étudiants (désordonné)
+# Ajout de 20 étudiants
 gestion.ajouter_etudiant("E115", "Samir", 15.5)
 gestion.ajouter_etudiant("E104", "Khalid", 12.0)
 gestion.ajouter_etudiant("E120", "Loubna", 18.0)
@@ -134,6 +115,9 @@ gestion.ajouter_etudiant("E107", "Soulaimane", 19.0)
 gestion.ajouter_etudiant("E111", "Radi", 11.5)
 gestion.ajouter_etudiant("E116", "Ibrahim", 17.0)
 
+# Affichage des arbres
+gestion.afficher_arbres_2d()
+
 # Recherche
 print("\nRecherche par matricule 'E105':")
 print(gestion.rechercher_par_matricule("E105"))
@@ -141,9 +125,4 @@ print(gestion.rechercher_par_matricule("E105"))
 print("\nRecherche par moyenne 19.5:")
 print(gestion.rechercher_par_moyenne(19.5))
 
-# Affichage de tous les étudiants
-print("\nListe de tous les étudiants :")
-gestion.afficher_tous_les_etudiants()
 
-# Affichage des arbres en 2D
-gestion.afficher_arbres_2d()
