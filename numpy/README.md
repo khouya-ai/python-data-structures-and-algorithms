@@ -1,3 +1,9 @@
+# Applications Numpy
+- Oussama khouya
+- Achraf Alaoui
+- Redone Khemisse
+---
+
 ## Application 1 - Resolution d'un systeme d'équation linéaire
 
 L'objectif de cette application est de comparer les deux méthodes, solve et cholesky, qui permettent de résoudre un système d'équations linéaires.
