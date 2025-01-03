@@ -1,7 +1,7 @@
 # Applications Numpy
 - Oussama khouya
-- Achraf Alaoui
-- Redone Khemisse
+- Achrafe ElAlaoui
+- Radwane Khemisse
 ---
 
 ## Application 1 - Resolution d'un systeme d'équation linéaire
